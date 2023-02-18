@@ -1,0 +1,13 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxbqiSzA5382ZSfzEJ1y5Xwsbuxz5-H8c"></script>
+<div id="map"></div>
+<script>
+function initMap() {
+  var myLatLng = {lat: 40.7128, lng: -74.0060};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: myLatLng
+  });
+}
+</script>
+<body onload="initMap()"></body>
