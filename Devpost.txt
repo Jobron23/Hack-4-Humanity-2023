@@ -1,0 +1,21 @@
+## Inspiration
+In the past few months, the world has undergone a litany of disasterous events. Situations such as the Ohio train derailment
+the recent earthquakes in Turkey, have inspired us to think deeply about common humanitarian issues that arise due to unexpected
+crises. Specifically, we took inspiration from the water issues that took place in Flint, Michigan. To give a bit context, in 2014
+Flint, Michigan experienced a severe water crisis in which their drinking water was contaminated with lead and Legionella Bacteria.
+Our project aims to combat future crises like this on a national scale, enabling citizens all over the U.S. to be able to locate
+safe drinking water. 
+
+
+## What it does
+
+
+## How we built it
+
+## Challenges we ran into
+
+## Accomplishments that we're proud of
+
+## What we learned
+
+## What's next for Project Safe Water
