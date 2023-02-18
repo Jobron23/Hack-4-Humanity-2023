@@ -1,6 +1,5 @@
+<<<<<<< HEAD
 print("hello")
 print("bob")
 print("nice")
 print("Grongle")
-print("emma push")
-print("try again")
