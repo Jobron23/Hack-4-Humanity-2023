@@ -32,6 +32,7 @@
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px; color: #000;">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Water-Evaluator.html" style="padding: 10px 20px;">Water Evaluator</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Factors.html" style="padding: 10px 20px;">Factors</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
@@ -71,7 +72,8 @@
         </div>
       </div>
     </section>
-    <section id="loader" class="u-clearfix u-section-4" id="sec-3138">
+    <div id="loader" style="display: none;" class="u-clearfix u-section-4"></div>
+    <section  id="info" style="display: none;" class="u-clearfix u-section-4" id="sec-3138">
       <div  class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-30 u-layout-spacing-vertical u-layout-wrap u-layout-wrap-1">
           <div class="u-gutter-0 u-layout">
@@ -91,7 +93,11 @@
                   <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-30 u-white u-layout-cell-2">
                     <div class="u-container-layout u-valign-middle u-container-layout-2">
                       <h2 class="u-text u-text-3">What Does This Mean?</h2>
-                      <p class="u-text u-text-4"></p>
+
+                      <p id="scale">[0-6.5] = Bad&nbsp&nbsp&nbsp&nbsp[6.5-8.5] = Safe/Okay&nbsp&nbsp&nbsp&nbsp&nbsp[8.5-10] = Perfect</p>
+
+                      <p id="para1"class="u-text u-text-4">Based on our algorithm, the water quality for </p>
+                      <p id="para2"class="u-text u-text-4"></p>
                     </div>
                   </div>
                 </div>
@@ -100,10 +106,10 @@
                 <div class="u-layout-row">
                   <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-3">
                     <div class="u-container-layout u-container-layout-3">
-                      <div class="u-align-left u-expanded u-grey-10 u-map">
+                      <div style="text-align: center;"class="u-align-left u-expanded u-grey-10 u-map">
                         <div class="embed-responsive">
                           <div id="map" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic" class="embed-responsive-item" ></div>
-                        </div>
+                        </div> Locations of Nearby Water Fountains in this County
                       </div>
                     </div>
                   </div>

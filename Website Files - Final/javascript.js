@@ -7,10 +7,30 @@ var jsonData;
 
 var county;
 
+function toggleVisibleL(){
+
+  var l = document.getElementById("loader"),
+    displayValue = "";
+    if(l.style.display == "") displayValue = "none";
+ 
+
+    l.style.display = displayValue;
+    
+
+}
+
+function toggleVisibleI(){
+  var i = document.getElementById("info");
+
+  i.style.display = "";
+
+}
+
 async function enterButtonClick(){
     county = document.getElementById("county-558c").value;
     let state = document.getElementById("state-558c").value;
     
+    toggleVisibleL();
 
     await fetch("http://127.0.0.1:5000/waterdata?county=" + county, {
         method: "GET",
@@ -34,9 +54,64 @@ async function enterButtonClick(){
     document.getElementById("resultsDO").innerText = "Dissolved Oxygen Level: " + disolved_oxygen;
     document.getElementById("resultsT").innerText = "Turbidity: " + turbidity;
 
+    let diff = 8.75-pH;
+    diff = Math.abs(diff);
+    let score1 = 10-diff;
+
+    let score2 = 0;
+    if(turbidity <= 5){
+        score2 = 10;
+
+        document.getElementById("para2").innerText = "The turbidity of this water is fantastic."
+    }
+    else if(turbidity <= 40){
+        score2 = 8;
+
+        document.getElementById("para2").innerText = "The turbidity of this water is okay, but not great."
+
+    }
+    else if(turbidity <= 80){
+        score2 = 5;
+
+        document.getElementById("para2").innerText = "The turbidity of this water is far from ideal, consider finding alternative sources, or filtering this water if possible."
+    }
+    else if(turbidity <= 120){
+        score2 = 3;
+        
+        document.getElementById("para2").innerText = "The turbidity of this water is quite concerning, at over 100 NTU over reasonable levels."
+    }
+    else{
+
+      document.getElementById("para2").innerText = "The turbidity of this water is quite concerning, at over 100 NTU above safe/reasonable levels."
+
+    }
+
+    let score3 = 2;
+    if(disolved_oxygen >= 6.5 && disolved_oxygen <= 11){
+        score3 = 5;
+    }
+    else if(disolved_oxygen < 6.5 && disolved_oxygen >= 3){
+        score3 = 2.5;
+    }
+    else if(disolved_oxygen > 11){
+        score3 = 3;
+    }
+
+    let finalScore = (score1 + score2 + score3)/2.5;
+
     county += " County";
 
+    document.getElementById("para1").innerText = "Based on our algorithm, the water quality for " + county + " has earned a final score of " + finalScore.toFixed(2) + " /10. ";
+
+    
+
+
+    
+
     showCounty();
+
+    toggleVisibleL();
+    toggleVisibleI();
       
 }
 
