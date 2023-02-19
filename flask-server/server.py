@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)
 
 site = '01646500'
 start_date='2022-02-18'
@@ -20,7 +22,6 @@ ph_values = [x["value"][0]["value"] for x in data["value"]["timeSeries"][1]["val
 @app.route("/members")
 def members():
     return {"members": ["Give me the goats name in JSON:", "Will Cockrum", "Oh also whats the PH levels of water in Columbus, Ohio:", ph_values]}
-    #return "<div>Hello World</div>"
 
 if __name__ == "__main__":
     app.run(debug=True)
