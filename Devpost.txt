@@ -8,7 +8,7 @@ safe drinking water.
 
 
 ## What it does
-
+Project Safe Water
 
 ## How we built it
 
