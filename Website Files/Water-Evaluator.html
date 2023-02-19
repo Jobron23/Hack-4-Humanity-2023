@@ -7,73 +7,13 @@
     <title>Water Evaluator</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="Water-Evaluator.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
-    <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
     
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic"></script>
-    <style>
-      #map {
-        height: 400px;
-        width: 100%;
-      }
-    </style>
-  </head>
-    <script>
-      // Set up the map
-      function initMap() {
-        // Example coordinates
-        let coordinates = [
-          { lat: 33.7749, lng: -121.4194 },
-          { lat: 38.7749, lng: -123.4154 },
-          { lat: 32.7709, lng: -127.4194 },
-          { lat: 39.7709, lng: -120.4154 }
-        ];
-
-        // Find the center point
-        let centerPoint = findCenterPoint(coordinates);
-
-        // Create the map
-        let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: centerPoint
-        });
-
-        // Add a marker for the center point
-        for (var i = 0; i < coordinates.length; i++) {
-        var marker = new google.maps.Marker({
-          position: coordinates[i],
-          map: map
-        });
-      }
-      }
-
-      // Find the center point
-      function findCenterPoint(coords) {
-        // Initialize variables for latitude and longitude sums
-        let latSum = 0;
-        let lngSum = 0;
-
-        // Loop through the array of coordinates and sum their latitude and longitude values
-        for (let i = 0; i < coords.length; i++) {
-          latSum += coords[i].lat;
-          lngSum += coords[i].lng;
-        }
-
-        // Calculate the average latitude and longitude values
-        let latAvg = latSum / coords.length;
-        let lngAvg = lngSum / coords.length;
-
-        // Return the center point as an object with latitude and longitude properties
-        return { lat: latAvg, lng: lngAvg };
-      }
-    </script>
-
-
+    
+    
+    
+    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -88,30 +28,16 @@
         <a href="https://nicepage.com" class="u-image u-logo u-image-1">
           <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
         </a>
-        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <nav class="u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
-              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
-              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-</g></svg>
-            </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px; color: #000;">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Water-Evaluator.html" style="padding: 10px 20px;">Water Evaluator</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
-            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Water-Evaluator.html">Water Evaluator</a>
-</li></ul>
-              </div>
-            </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
@@ -132,18 +58,16 @@
           <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" source="email">
             <div class="u-form-group u-form-name u-label-top">
               <label for="name-558c" class="u-label">State</label>
-              <input type="text" placeholder="Washington" id="name-558c" name="state" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+              <input type="text" placeholder="Washington" id="state-558c" name="state" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
             </div>
             <div class="u-form-email u-form-group u-label-top">
               <label for="email-558c" class="u-label">County</label>
-              <input type="email" placeholder="King" id="email-558c" name="county" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+              <input type="email" placeholder="King" id="county-558c" name="county" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
             </div>
             <div class="u-form-group u-form-submit u-label-top">
-              <a href="#" class="u-btn u-btn-submit u-button-style">Enter</a>
+              <a href="#" id="buttonEnter" class="u-btn u-btn-submit u-button-style" onclick="enterButtonClick()">Enter</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
-            <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
-            <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
             <input type="hidden" value="" name="recaptchaResponse">
             <input type="hidden" name="formServices" value="2604c04bf83800a287831694cca74d44">
           </form>
@@ -160,7 +84,7 @@
                   <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-30 u-white u-layout-cell-1">
                     <div class="u-container-layout u-container-layout-1">
                       <h2 class="u-text u-text-1">Results</h2>
-                      <p class="u-text u-text-2">Results</p>
+                      <p id="resultsP" class="u-text u-text-2">Results</p>
                     </div>
                   </div>
                   <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-30 u-white u-layout-cell-2">
@@ -177,8 +101,7 @@
                     <div class="u-container-layout u-container-layout-3">
                       <div class="u-align-left u-expanded u-grey-10 u-map">
                         <div class="embed-responsive">
-                          <body onload="initMap()">
-                            <div id="map" style="height: 500px; width: 100%;"></div>
+                          <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=King%20County%2C%20Washington&amp;z=10&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyS2luZyUyMENvdW50eSUyQyUyMFdhc2hpbmd0b24lMjIlMkMlMjJ6b29tJTIyJTNBMTAlMkMlMjJ0eXBlSWQlMjIlM0ElMjJyb2FkJTIyJTJDJTIybGFuZyUyMiUzQSUyMiUyMiU3RA=="></iframe>
                         </div>
                       </div>
                     </div>
@@ -198,16 +121,7 @@
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-37d1"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Project Safe Water - 2023</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
+ 
+      <script src="javascript.js"></script>
   
 </body></html>
