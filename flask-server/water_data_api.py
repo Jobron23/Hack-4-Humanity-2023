@@ -1,8 +1,10 @@
 import requests
 import json
+from flask_cors import CORS
 from flask import Flask, request
 
 app = Flask(__name__)
+CORS(app)
 
 def get_county_code(county_name, filename):
     with open(filename) as f:
