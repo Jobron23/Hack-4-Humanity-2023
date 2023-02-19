@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Variable on Button Click</title>
+</head>
+<body>
+	<p>Click the button to display the variable:</p>
+	<button onclick="scoreAlgorithm()">Display Variable</button>
+	<p id="variable"></p>
+
+	<script>
+		function scoreAlgorithm() {
+			
+            let pH = 1;
+            let disolved_oxygen = 7;
+            let turbidity = 200;
+
+            let diff = 8.75-pH;
+            diff = Math.abs(diff);
+            let score1 = 10-diff;
+
+            let score2 = 0;
+            if(turbidity <= 5){
+                score2 = 10;
+            }
+            else if(turbidity <= 40){
+                score2 = 8;
+            }
+            else if(turbidity <= 80){
+                score2 = 5;
+            }
+            else if(turbidity <= 120){
+                score2 = 3;
+            }
+
+            let score3 = 2;
+            if(disolved_oxygen >= 6.5 && disolved_oxygen <= 11){
+                score3 = 5;
+            }
+            else if(disolved_oxygen < 6.5 && disolved_oxygen >= 3){
+                score3 = 2.5;
+            }
+            else if(disolved_oxygen > 11){
+                score3 = 3;
+            }
+
+            let finalScore = (score1 + score2 + score3)/2.5;
+
+
+            var variableDisplay = document.getElementById("variable");
+			// Set the HTML element's text content to the value of the variable
+			variableDisplay.textContent = finalScore;
+		}
+	</script>
+</body>
+</html>
+This HTML file contains a button element that, when clicked, calls a JavaScript function named displayVariable(). Inside this function, a variable named myVariable is declared and assigned a value. Then, the textContent property of an HTML element with the ID "variable" is set to the value of myVariable, which displays the variable's value on the page.
+
+
+
+
