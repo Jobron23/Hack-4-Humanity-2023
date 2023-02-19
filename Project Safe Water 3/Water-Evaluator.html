@@ -14,10 +14,66 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
     
-    
-    
-    
-    
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic"></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+    <script>
+      // Set up the map
+      function initMap() {
+        // Example coordinates
+        let coordinates = [
+          { lat: 33.7749, lng: -121.4194 },
+          { lat: 38.7749, lng: -123.4154 },
+          { lat: 32.7709, lng: -127.4194 },
+          { lat: 39.7709, lng: -120.4154 }
+        ];
+
+        // Find the center point
+        let centerPoint = findCenterPoint(coordinates);
+
+        // Create the map
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: centerPoint
+        });
+
+        // Add a marker for the center point
+        for (var i = 0; i < coordinates.length; i++) {
+        var marker = new google.maps.Marker({
+          position: coordinates[i],
+          map: map
+        });
+      }
+      }
+
+      // Find the center point
+      function findCenterPoint(coords) {
+        // Initialize variables for latitude and longitude sums
+        let latSum = 0;
+        let lngSum = 0;
+
+        // Loop through the array of coordinates and sum their latitude and longitude values
+        for (let i = 0; i < coords.length; i++) {
+          latSum += coords[i].lat;
+          lngSum += coords[i].lng;
+        }
+
+        // Calculate the average latitude and longitude values
+        let latAvg = latSum / coords.length;
+        let lngAvg = lngSum / coords.length;
+
+        // Return the center point as an object with latitude and longitude properties
+        return { lat: latAvg, lng: lngAvg };
+      }
+    </script>
+
+
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -121,7 +177,8 @@
                     <div class="u-container-layout u-container-layout-3">
                       <div class="u-align-left u-expanded u-grey-10 u-map">
                         <div class="embed-responsive">
-                          <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=King%20County%2C%20Washington&amp;z=10&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyS2luZyUyMENvdW50eSUyQyUyMFdhc2hpbmd0b24lMjIlMkMlMjJ6b29tJTIyJTNBMTAlMkMlMjJ0eXBlSWQlMjIlM0ElMjJyb2FkJTIyJTJDJTIybGFuZyUyMiUzQSUyMiUyMiU3RA=="></iframe>
+                          <body onload="initMap()">
+                            <div id="map" style="height: 500px; width: 100%;"></div>
                         </div>
                       </div>
                     </div>
