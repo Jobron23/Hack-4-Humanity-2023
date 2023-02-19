@@ -1,6 +1,6 @@
 import pandas as pd
 from geopy.geocoders import Nominatim
-from water_fountains_api import fountains
+from flask-server.water_fountains_api import fountains
 
 # read in the county data
 county_data = pd.read_csv('us-county-b')
