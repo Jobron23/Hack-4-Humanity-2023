@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Display Coordinates</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic"></script>
-  <script>
-    function initMap() {
-      var mapCenter = {lat: 37.7749, lng: -122.4194};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: mapCenter
-      });
-      
-      var locations = [
-        {lat: 37.7749, lng: -122.4194},
-        {lat: 37.7749, lng: -122.4154},
-        {lat: 37.7709, lng: -122.4194},
-        {lat: 37.7709, lng: -122.4154}
-      ];
-      
-      for (var i = 0; i < locations.length; i++) {
+  <head>
+    <meta charset="UTF-8">
+    <title>Display Center Point on Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic"></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+    <script>
+      // Set up the map
+      function initMap() {
+        // Example coordinates
+        let coordinates = [
+          { lat: 33.7749, lng: -121.4194 },
+          { lat: 38.7749, lng: -123.4154 },
+          { lat: 32.7709, lng: -127.4194 },
+          { lat: 39.7709, lng: -120.4154 }
+        ];
+
+        // Find the center point
+        let centerPoint = findCenterPoint(coordinates);
+
+        // Create the map
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: centerPoint
+        });
+
+        // Add a marker for the center point
+        for (var i = 0; i < coordinates.length; i++) {
         var marker = new google.maps.Marker({
-          position: locations[i],
+          position: coordinates[i],
           map: map
         });
       }
-    }
-  </script>
-</head>
-<body onload="initMap()">
-  <div id="map" style="height: 500px; width: 100%;"></div>
-</body>
+      }
+
+      // Find the center point
+      function findCenterPoint(coords) {
+        // Initialize variables for latitude and longitude sums
+        let latSum = 0;
+        let lngSum = 0;
+
+        // Loop through the array of coordinates and sum their latitude and longitude values
+        for (let i = 0; i < coords.length; i++) {
+          latSum += coords[i].lat;
+          lngSum += coords[i].lng;
+        }
+
+        // Calculate the average latitude and longitude values
+        let latAvg = latSum / coords.length;
+        let lngAvg = lngSum / coords.length;
+
+        // Return the center point as an object with latitude and longitude properties
+        return { lat: latAvg, lng: lngAvg };
+      }
+    </script>
+    <body onload="initMap()">
+        <div id="map" style="height: 500px; width: 100%;"></div>
 </html>
