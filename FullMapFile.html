@@ -22,17 +22,30 @@
       }
     }
     let latlonJSON;
+    let county_cords;
     async function showPosition(position) {
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-      let lat1 = latitude-0.02;
-      let lat2 = latitude+0.02;
-      let lon1 = longitude-0.02;
-      let lon2 = longitude+0.02;
-      document.getElementById("demo").innerHTML = "Latitude: " + latitude + "  Lat1: " + lat1 + "  Lat2: " + lat2 + "<br>Longitude: " + longitude + "  Lon1: " + lon1 + "  Lon2: " + lon2;
-      
-      const queryString = `?lat1=${lat1}&lon1=${lon1}&lat2=${lat2}&lon2=${lon2}`;
+      county = "King County"
+      const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${county}&components=country:$US&key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic`;
 
+    // Make the API call
+    await fetch(apiUrl, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+    // Extract the latitude and longitude from the response
+    county_cords = data.results[0].geometry.location;
+
+    // Do something with the coordinates
+    console.log(`The coordinates of ${county} county are: ${county_cords.lat}, ${county_cords.lng}`);
+     })
+    .catch(error => console.error(error));
+    let lat1 = county_cords.lat-0.5;
+    let lat2 = county_cords.lat+0.5;
+    let lon1 = county_cords.lng-0.5;
+    let lon2 = county_cords.lng+0.5;
+    
+    const queryString = `?lat1=${lat1}&lon1=${lon1}&lat2=${lat2}&lon2=${lon2}`;
         await fetch(`http://127.0.0.1:5000/fountains${queryString}`, {
           method: 'GET'
         })
@@ -42,7 +55,6 @@
         latlonJSON = data
 
         // Print the resulting array of objects
-        console.log(latlonJSON);
         initMap();
     })
 
