@@ -8,7 +8,11 @@ safe drinking water.
 
 
 ## What it does
-Project Safe Water
+Project Safe Water effectively tracks the location of safe drinking sources in a small vicinity of the users location. When accessing
+our website, users are prompted with options to enter in both their state and county. Project Safe Water displays the pH level of the
+water, the turbidity, and the amount of the dissolved oxygen in the water based on location. Each of these values is stored, converted
+into longitude and latitude, and plotted on a map in which the user can view. Afterwards, the user is provided with safe, clean drinking
+water choices in their vicinity
 
 ## How we built it
 
