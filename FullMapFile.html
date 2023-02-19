@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <button onclick="getLocation()">Get Location</button>
+  <p id="demo"></p>
+    <title>Display Center Point on Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW-AVxUD_FXSpTknyR8XthFpKBm4CNuic"></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+    <script>
+        function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    let latlonJSON;
+    async function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      let lat1 = latitude-0.02;
+      let lat2 = latitude+0.02;
+      let lon1 = longitude-0.02;
+      let lon2 = longitude+0.02;
+      document.getElementById("demo").innerHTML = "Latitude: " + latitude + "  Lat1: " + lat1 + "  Lat2: " + lat2 + "<br>Longitude: " + longitude + "  Lon1: " + lon1 + "  Lon2: " + lon2;
+      
+      const queryString = `?lat1=${lat1}&lon1=${lon1}&lat2=${lat2}&lon2=${lon2}`;
+
+        await fetch(`http://127.0.0.1:5000/fountains${queryString}`, {
+          method: 'GET'
+        })
+          .then(response => response.json())
+            .then(data => {
+        // Handle the response data
+        latlonJSON = data
+
+        // Print the resulting array of objects
+        console.log(latlonJSON);
+        initMap();
+    })
+
+         .catch(error => console.error(error));
+    }
+
+    
+      // Set up the map
+      function initMap() {
+        // Example coordinates
+        let coordinates =[];
+        for (let i = 0; i < latlonJSON.length; i++) {
+             let lat = latlonJSON[i][0];
+            let lng = latlonJSON[i][1];
+            let obj = { lat: lat, lng: lng };
+            coordinates.push(obj);
+        }
+        console.log(coordinates);
+        
+        // Find the center point
+        let centerPoint = findCenterPoint(coordinates);
+
+        // Create the map
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: centerPoint
+        });
+
+        // Add a marker for the center point
+        for (var i = 0; i < coordinates.length; i++) {
+        var marker = new google.maps.Marker({
+          position: coordinates[i],
+          map: map
+        });
+      }
+      }
+
+      // Find the center point
+      function findCenterPoint(coords) {
+        // Initialize variables for latitude and longitude sums
+        let latSum = 0;
+        let lngSum = 0;
+
+        // Loop through the array of coordinates and sum their latitude and longitude values
+        for (let i = 0; i < coords.length; i++) {
+          latSum += coords[i].lat;
+          lngSum += coords[i].lng;
+        }
+
+        // Calculate the average latitude and longitude values
+        let latAvg = latSum / coords.length;
+        let lngAvg = lngSum / coords.length;
+
+        // Return the center point as an object with latitude and longitude properties
+        return { lat: latAvg, lng: lngAvg };
+      }
+    </script>
+    <body>
+        <div id="map" style="height: 500px; width: 100%;"></div>
+</html>
