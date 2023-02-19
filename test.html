@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <button onclick="getLocation()">Get Location</button>
+  <p id="demo"></p>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      let lat1 = latitude-0.02;
+      let lat2 = latitude+0.02;
+      let lon1 = longitude-0.02;
+      let lon2 = longitude+0.02;
+      document.getElementById("demo").innerHTML = "Latitude: " + latitude + "  Lat1: " + lat1 + "  Lat2: " + lat2 + "<br>Longitude: " + longitude + "  Lon1: " + lon1 + "  Lon2: " + lon2;
+      
+      const queryString = `?var1=${lat1}&var2=${lon1}&var3=${lat2}&var4=${lon2}`;
+
+        fetch(`https://127.0.0.1:5000/fountains${queryString}`)
+          .then(response => response.text())
+            .then(data => {
+        // Handle the response data
+      let coordinates = data.map(function(location) {
+      return { lat: location[0], lng: location[1] };
+    });
+
+        // Print the resulting array of objects
+        console.log(coordinates);
+    })
+
+         .catch(error => console.error(error));
+    }
+  </script>
+</body>
+</html>
