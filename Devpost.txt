@@ -12,7 +12,17 @@ Project Safe Water
 
 ## How we built it
 
+
+
 ## Challenges we ran into
+The first challenge we ran into was git
+
+Turning a county name into a the right code to query the api with
+
+Locating a usable API that returns the location of water fountains
+
+
+
 
 ## Accomplishments that we're proud of
 
