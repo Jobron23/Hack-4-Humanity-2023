@@ -27,14 +27,11 @@
       
       const queryString = `?lat1=${lat1}&lon1=${lon1}&lat2=${lat2}&lon2=${lon2}`;
 
-        fetch(`https://127.0.0.1:5000/fountains${queryString}`)
+        fetch(`http://127.0.0.1:5000/fountains${queryString}`)
           .then(response => response.text())
             .then(data => {
         // Handle the response data
-      let coordinates = data.map(function(location) {
-      return { lat: location[0], lng: location[1] };
-    });
-
+      let coordinates = data
         // Print the resulting array of objects
         console.log(coordinates);
     })
